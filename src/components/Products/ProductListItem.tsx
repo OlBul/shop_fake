@@ -21,14 +21,14 @@ const ProductListItem = ({
   return (
     <Card>
       <CardContent>
-      <h4 className='product-title'>{name}</h4>
+      <h3 className='product-title'>{name}</h3>
       <div className='product-description'>{description}</div>
-      <div className='product-features red'>Type: {type}</div>
+      <div className='product-features'>Type: {type}</div>
       <div className='product-features'>Capacity: {capacity}Gb</div>
       <div className='product-price'>$ {price}</div>
       </CardContent>     
-      <CardActions>
-        <Button variant='contained'> Add to card  </Button>
+      <CardActions className='btn-wrap'>
+        <Button variant='outlined'> Add to card  </Button>
       </CardActions>
     </Card>
   )

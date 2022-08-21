@@ -3,6 +3,7 @@ import React from 'react'
 import './ProductListItem.scss'
 
 export type ProductProps ={
+  image:string
   id?:number
   name:string
   description:string
@@ -13,6 +14,7 @@ export type ProductProps ={
 }
 
 const ProductListItem = ({
+  image,
   name, 
   description, 
   type,
@@ -22,6 +24,9 @@ const ProductListItem = ({
   return (
     <Card>
       <CardContent>
+        <div className='product-image'>
+          <img src={image} alt=''></img>
+        </div>
       <h3 className='product-title'>{name}</h3>
       <div className='product-description'>{description}</div>
       <div className='product-features'>Type: {type}</div>

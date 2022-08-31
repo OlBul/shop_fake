@@ -8,7 +8,7 @@ import {
 import React, { useState } from 'react'
 import './ProductListItem.scss'
 
-export type ProductProps = {
+type ProductProps = {
     image: string
     id?: number
     name: string
@@ -16,6 +16,7 @@ export type ProductProps = {
     type: string
     capacity: number
     price: number
+    addProductToCart: (count: number, price: number) => void
 }
 
 const ProductListItem = ({
@@ -25,6 +26,7 @@ const ProductListItem = ({
     type,
     capacity,
     price,
+    addProductToCart,
 }: ProductProps) => {
     const [count, setCount] = useState<number>(1)
 
@@ -63,7 +65,12 @@ const ProductListItem = ({
                 </div>
             </CardContent>
             <CardActions className="btn-wrap">
-                <Button variant="outlined"> Add to card </Button>
+                <Button
+                    variant="outlined"
+                    onClick={() => addProductToCart(count, price)}
+                >
+                    Add to card
+                </Button>
             </CardActions>
         </Card>
     )

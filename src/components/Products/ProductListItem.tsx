@@ -27,7 +27,6 @@ const ProductListItem = ({
     price,
 }: ProductProps) => {
     const [count, setCount] = useState<number>(1)
-    const [color, setColor] = useState<string>('red')
 
     const onDecrementClick = () =>
         setCount((prevState: number) => prevState - 1)
@@ -40,7 +39,7 @@ const ProductListItem = ({
                 <div className="product-image">
                     <img src={image} alt=""></img>
                 </div>
-                <h3 className={`product-title ${color}`}>{name}</h3>
+                <h3 className="product-title">{name}</h3>
                 <div className="product-description">{description}</div>
                 <div className="product-features">Type: {type}</div>
                 <div className="product-features">Capacity: {capacity}Gb</div>

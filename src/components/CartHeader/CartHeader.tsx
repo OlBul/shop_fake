@@ -1,14 +1,17 @@
 import React from 'react'
 
-type Props = {}
+type Props = {
+    totalCount: number
+    totalPrice: number
+}
 
-const CartHeader = (props: Props) => {
-  return (
-    <div>
-      <div>0</div>
-      <div>$ 0</div>
-    </div>
-  )
+const CartHeader = ({ totalCount, totalPrice }: Props) => {
+    return (
+        <div>
+            <div>{totalCount}</div>
+            <div>$ {totalPrice}</div>
+        </div>
+    )
 }
 
 export default CartHeader

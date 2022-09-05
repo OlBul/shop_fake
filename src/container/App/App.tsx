@@ -14,7 +14,8 @@ const App = () => {
     })
     const addProductToCart = (id: number, count: number) => {
         setproductsInCart((prevState: productsInCartProps) => ({
-            [id]: prevState[id] + count,
+            ...prevState,
+            [id]: (prevState[id] || 0) + count,
         }))
     }
 
@@ -22,7 +23,7 @@ const App = () => {
         <>
             <CssBaseline />
             <Header productsInCart={productsInCart} />
-            <button onClick={() => addProductToCart(2, 5)}>Add to cart</button>
+            {/* <button onClick={() => addProductToCart(2, 5)}>Add to cart</button> */}
             <Main addProductToCart={addProductToCart} />
         </>
     )

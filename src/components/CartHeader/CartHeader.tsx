@@ -26,6 +26,18 @@ const CartHeader = ({
                     {productsInCart[parseInt(productId)]}
                 </div>
             ))}
+            <div>
+                {' '}
+                Total{' '}
+                {keys(productsInCart).reduce(
+                    (total, productId) =>
+                        total +
+                        ProductsObject[parseInt(productId)].price *
+                            productsInCart[parseInt(productId)],
+                    0
+                )}{' '}
+                $
+            </div>
         </div>
     )
 }

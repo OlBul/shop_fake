@@ -1,5 +1,4 @@
-const productsArray = [{
-  
+const productsArray = [{  
   id:1,
   name:"iPhone X",
   description:'This is iPhone X',

@@ -12,15 +12,17 @@ const App = () => {
         1: 1,
         2: 1,
     })
-    const addProductToCart = (count: number, price: number) => {
-        console.log('test')
+    const addProductToCart = (id: number, count: number) => {
+        setproductsInCart((prevState: productsInCartProps) => ({
+            [id]: prevState[id] + count,
+        }))
     }
 
     return (
         <>
             <CssBaseline />
             <Header productsInCart={productsInCart} />
-
+            <button onClick={() => addProductToCart(2, 5)}>Add to cart</button>
             <Main addProductToCart={addProductToCart} />
         </>
     )

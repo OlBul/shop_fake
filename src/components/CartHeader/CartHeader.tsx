@@ -4,15 +4,17 @@ import productsArray, {
     getProductsObject,
     Product,
 } from 'components/Products/productsArray'
+import CartTotal from 'components/Cart/CartTotal'
+import { Props } from 'components/Cart/CartTotal'
 
-type Props = {
+/* type Props = {
     productsInCart: {
         [id: number]: number
     }
     ProductsObject?: {
         [id: number]: Product
     }
-}
+} */
 
 const CartHeader = ({
     productsInCart,
@@ -26,18 +28,7 @@ const CartHeader = ({
                     {productsInCart[parseInt(productId)]}
                 </div>
             ))}
-            <div>
-                {' '}
-                Total{' '}
-                {keys(productsInCart).reduce(
-                    (total, productId) =>
-                        total +
-                        ProductsObject[parseInt(productId)].price *
-                            productsInCart[parseInt(productId)],
-                    0
-                )}{' '}
-                $
-            </div>
+            <CartTotal productsInCart={productsInCart} />
         </div>
     )
 }

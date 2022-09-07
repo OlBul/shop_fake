@@ -10,15 +10,17 @@ export type Props = {
     productsInCart: {
         [id: number]: number
     }
+    removeProductFromCart: (id: number) => void
 }
 
-const CartPage = ({ productsInCart }: Props) => {
+const CartPage = ({ productsInCart, removeProductFromCart }: Props) => {
     return (
         <div style={{ padding: '30px 0' }}>
             <Grid container spacing={4}>
                 <CartProductList
                     productsInCart={productsInCart}
                     CartItem={CartProductListItemExended}
+                    removeProductFromCart={removeProductFromCart}
                 />
             </Grid>
             <CartTotal productsInCart={productsInCart} />

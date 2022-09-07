@@ -6,9 +6,14 @@ import { DeleteOutline } from '@mui/icons-material'
 type Props = {
     productCount: number
     product: Product
+    removeProductFromCart: (id: number) => void
 }
 
-const CartProductListItemExended = ({ productCount, product }: Props) => {
+const CartProductListItemExended = ({
+    productCount,
+    product,
+    removeProductFromCart,
+}: Props) => {
     return (
         <Grid item xs={12} sm={6}>
             <Card>
@@ -23,7 +28,10 @@ const CartProductListItemExended = ({ productCount, product }: Props) => {
                     <div>{product.name}</div>
                     <p>Price for one time: {product.price}</p>
                     <p>Count: {productCount}</p>
-                    <Button variant="outlined">
+                    <Button
+                        variant="outlined"
+                        onClick={() => removeProductFromCart(product.id)}
+                    >
                         <DeleteOutline />
                     </Button>
                 </CardContent>

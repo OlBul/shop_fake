@@ -3,6 +3,7 @@ import CssBaseline from '@mui/material/CssBaseline'
 import Header from 'container/Header/Header'
 import Main from 'container/Main/Main'
 import { omit } from 'lodash'
+//import { count } from 'console'
 
 export type ProductsInCartProps = {
     [id: number]: number
@@ -26,6 +27,13 @@ const App = () => {
         )
     }
 
+    const changeProductQuatity = (id: number, count: number) => {
+        setproductsInCart((prevState: ProductsInCartProps) => ({
+            ...prevState,
+            [id]: count,
+        }))
+    }
+
     return (
         <>
             <CssBaseline />
@@ -35,6 +43,7 @@ const App = () => {
                 addProductToCart={addProductToCart}
                 productsInCart={productsInCart}
                 removeProductFromCart={removeProductFromCart}
+                changeProductQuatity={changeProductQuatity}
             />
         </>
     )

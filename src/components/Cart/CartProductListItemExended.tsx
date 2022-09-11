@@ -2,17 +2,20 @@ import { Grid, CardContent, Card, Button } from '@mui/material'
 import React from 'react'
 import { Product } from 'components/Products/productsArray'
 import { DeleteOutline } from '@mui/icons-material'
+import Quantity from 'components/Quantity/Quantity'
 
 type Props = {
     productCount: number
     product: Product
     removeProductFromCart: (id: number) => void
+    changeProductQuatity: (id: number, count: number) => void
 }
 
 const CartProductListItemExended = ({
     productCount,
     product,
     removeProductFromCart,
+    changeProductQuatity,
 }: Props) => {
     return (
         <Grid item xs={12} sm={6}>
@@ -26,8 +29,17 @@ const CartProductListItemExended = ({
                         />
                     </div>
                     <div>{product.name}</div>
-                    <p>Price for one time: {product.price}</p>
-                    <p>Count: {productCount}</p>
+                    <p>Price for one time: {product.price}$</p>
+                    <p>Count: {productCount}</p>                   
+                    <Quantity
+                        count={productCount}
+                        onDecrementClick={() =>
+                            changeProductQuatity(product.id, productCount - 1)
+                        }
+                        onIncrementClick={() =>
+                            changeProductQuatity(product.id, productCount + 1)
+                        }
+                    />
                     <Button
                         variant="outlined"
                         onClick={() => removeProductFromCart(product.id)}

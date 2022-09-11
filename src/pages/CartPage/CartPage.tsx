@@ -11,9 +11,14 @@ export type Props = {
         [id: number]: number
     }
     removeProductFromCart: (id: number) => void
+    changeProductQuatity: (id: number, count: number) => void
 }
 
-const CartPage = ({ productsInCart, removeProductFromCart }: Props) => {
+const CartPage = ({
+    productsInCart,
+    removeProductFromCart,
+    changeProductQuatity,
+}: Props) => {
     return (
         <div style={{ padding: '30px 0' }}>
             <Grid container spacing={4}>
@@ -21,6 +26,7 @@ const CartPage = ({ productsInCart, removeProductFromCart }: Props) => {
                     productsInCart={productsInCart}
                     CartItem={CartProductListItemExended}
                     removeProductFromCart={removeProductFromCart}
+                    changeProductQuatity={changeProductQuatity}
                 />
             </Grid>
             <CartTotal productsInCart={productsInCart} />

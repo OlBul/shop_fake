@@ -4,7 +4,6 @@ import productsArray, {
     getProductsObject,
     Product,
 } from 'components/Products/productsArray'
-//import { Props } from 'components/pages/CartPage/CartPage'
 
 export type Props = {
     productsInCart: {

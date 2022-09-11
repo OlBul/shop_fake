@@ -3,17 +3,23 @@ import { Button, TextField } from '@mui/material'
 
 type Props = {
     count: number
+    minCount?: number
     onDecrementClick: () => void
     onIncrementClick: () => void
 }
 
-const Quantity = ({ count, onDecrementClick, onIncrementClick }: Props) => {
+const Quantity = ({
+    count,
+    onDecrementClick,
+    onIncrementClick,
+    minCount = 1,
+}: Props) => {
     return (
         <div className="product-quantity">
             <Button
                 variant="contained"
                 onClick={() => onDecrementClick()}
-                disabled={count <= 1}
+                disabled={count <= minCount}
             >
                 -
             </Button>

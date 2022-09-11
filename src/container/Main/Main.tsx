@@ -1,5 +1,6 @@
 import { Container } from '@mui/material'
 import ProductList from 'components/Products/ProductList'
+import Reviews from 'components/Reviews/Reviews'
 import CartPage from 'pages/CartPage/CartPage'
 import React from 'react'
 import { Routes, Route } from 'react-router-dom'
@@ -24,7 +25,12 @@ const Main = ({
                     <Route
                         path="/"
                         element={
-                            <ProductList addProductToCart={addProductToCart} />
+                            <>
+                                <ProductList
+                                    addProductToCart={addProductToCart}
+                                />
+                                <Reviews />
+                            </>
                         }
                     />
                     <Route

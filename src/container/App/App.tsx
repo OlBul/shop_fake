@@ -38,7 +38,6 @@ const App = () => {
         <>
             <CssBaseline />
             <Header productsInCart={productsInCart} />
-            <button onClick={() => removeProductFromCart(2)}>Remove</button>
             <Main
                 addProductToCart={addProductToCart}
                 productsInCart={productsInCart}

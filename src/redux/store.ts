@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
+import CartReducer from "./CartReducer";
 import likeReducer from "./LikeReducer";
 
 export const store = configureStore ({
   reducer: {
-    productsLikeState: likeReducer
+    productsLikeState: likeReducer,
+    productsInCart: CartReducer
   }
 })
 

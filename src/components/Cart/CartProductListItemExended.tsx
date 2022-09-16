@@ -6,23 +6,19 @@ import Quantity from 'components/Quantity/Quantity'
 import FavoriteIcon from '@mui/icons-material/Favorite'
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
 import { useAppDispatch, useAppSelector } from 'redux/hooks'
+import { removeProductFromCart, changeProductQuatity } from 'redux/CartReducer'
 
 type Props = {
     productCount: number
     product: Product
-    removeProductFromCart: (id: number) => void
-    changeProductQuatity: (id: number, count: number) => void
 }
 
-const CartProductListItemExended = ({
-    productCount,
-    product,
-    removeProductFromCart,
-    changeProductQuatity,
-}: Props) => {
+const CartProductListItemExended = ({ productCount, product }: Props) => {
     const isLiked = useAppSelector(
         (state) => state.productsLikeState[product.id]
     )
+
+    const dispatch = useAppDispatch()
     return (
         <Grid item xs={12} sm={6}>
             <Card>
@@ -50,20 +46,29 @@ const CartProductListItemExended = ({
                         count={productCount}
                         onDecrementClick={() =>
                             productCount === 1
-                                ? removeProductFromCart(product.id)
-                                : changeProductQuatity(
-                                      product.id,
-                                      productCount - 1
+                                ? dispatch(removeProductFromCart(product.id))
+                                : dispatch(
+                                      changeProductQuatity({
+                                          id: product.id,
+                                          count: productCount - 1,
+                                      })
                                   )
                         }
                         onIncrementClick={() =>
-                            changeProductQuatity(product.id, productCount + 1)
+                            dispatch(
+                                changeProductQuatity({
+                                    id: product.id,
+                                    count: productCount + 1,
+                                })
+                            )
                         }
                         minCount={0}
                     />
                     <Button
                         variant="outlined"
-                        onClick={() => removeProductFromCart(product.id)}
+                        onClick={() =>
+                            dispatch(removeProductFromCart(product.id))
+                        }
                     >
                         <DeleteOutline />
                     </Button>

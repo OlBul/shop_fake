@@ -1,43 +1,53 @@
-import { Button, Card, CardActions, CardContent } from '@mui/material'
+import {
+    Button,
+    Card,
+    CardActions,
+    CardContent,
+    TextField,
+} from '@mui/material'
 import React from 'react'
 import './ProductListItem.scss'
 
-export type ProductProps ={
-  image:string
-  id?:number
-  name:string
-  description:string
-  type:string
-  capacity:number
-  price:number
-
+export type ProductProps = {
+    image: string
+    id?: number
+    name: string
+    description: string
+    type: string
+    capacity: number
+    price: number
 }
 
 const ProductListItem = ({
-  image,
-  name, 
-  description, 
-  type,
-  capacity, 
-  price
-}:ProductProps) => {
-  return (
-    <Card>
-      <CardContent>
-        <div className='product-image'>
-          <img src={image} alt=''></img>
-        </div>
-      <h3 className='product-title'>{name}</h3>
-      <div className='product-description'>{description}</div>
-      <div className='product-features'>Type: {type}</div>
-      <div className='product-features'>Capacity: {capacity}Gb</div>
-      <div className='product-price'>$ {price}</div>
-      </CardContent>     
-      <CardActions className='btn-wrap'>
-        <Button variant='outlined'> Add to card  </Button>
-      </CardActions>
-    </Card>
-  )
+    image,
+    name,
+    description,
+    type,
+    capacity,
+    price,
+}: ProductProps) => {
+    return (
+        <Card>
+            <CardContent>
+                <div className="product-image">
+                    <img src={image} alt=""></img>
+                </div>
+                <h3 className="product-title">{name}</h3>
+                <div className="product-description">{description}</div>
+                <div className="product-features">Type: {type}</div>
+                <div className="product-features">Capacity: {capacity}Gb</div>
+                <div className="product-price">$ {price}</div>
+                <div className="product-quantity">
+                    <Button variant="contained">-</Button>
+                    <TextField size="small" value={1} variant="outlined" />
+                    <Button variant="contained">+</Button>
+                </div>
+            </CardContent>
+            <CardActions className="btn-wrap">
+                <Button variant="outlined"> Add to card </Button>
+            </CardActions>
+        </Card>
+    )
 }
 
-export default ProductListItem 
+export default ProductListItem

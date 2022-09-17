@@ -1,5 +1,4 @@
 import { Grid, CardContent, Card, Button } from '@mui/material'
-import React from 'react'
 import { Product } from 'components/Products/productsArray'
 import { DeleteOutline } from '@mui/icons-material'
 import Quantity from 'components/Quantity/Quantity'

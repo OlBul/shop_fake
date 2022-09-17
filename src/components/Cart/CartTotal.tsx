@@ -1,23 +1,21 @@
-import React from 'react'
 import { keys } from 'lodash'
-import productsArray, {
-    getProductsObject,
-    Product,
-} from 'components/Products/productsArray'
+import { getProductsObject, Product } from 'components/Products/productsArray'
+
+import { useAppSelector } from 'redux/hooks'
+
+type ProductsObject = {
+    [key: number]: Product
+}
 
 export type Props = {
     productsInCart: {
         [id: number]: number
     }
-    ProductsObject?: {
-        [id: number]: Product
-    }
 }
 
-const CartTotal = ({
-    productsInCart,
-    ProductsObject = getProductsObject(productsArray),
-}: Props) => {
+const CartTotal = ({ productsInCart }: Props) => {
+    const productsArray = useAppSelector((state) => state.products)
+    const ProductsObject: ProductsObject = getProductsObject(productsArray)
     return (
         <div>
             Total{' '}

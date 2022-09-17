@@ -1,30 +1,26 @@
-import React from 'react'
 import { keys } from 'lodash'
-import productsArray, {
-    getProductsObject,
-    Product,
-} from 'components/Products/productsArray'
+import { getProductsObject, Product } from 'components/Products/productsArray'
 import CartProductListItem from './CartProductListItem'
+import { useAppSelector } from 'redux/hooks'
+
+type ProductsObject = {
+    [key: number]: Product
+}
 
 export type Props = {
     productsInCart: {
         [id: number]: number
     }
-    ProductsObject?: {
-        [id: number]: Product
-    }
+
     CartItem?: any
-    removeProductFromCart?: (id: number) => void
-    changeProductQuatity?: (id: number, count: number) => void
 }
 
 const CartProductList = ({
     productsInCart,
-    ProductsObject = getProductsObject(productsArray),
     CartItem = CartProductListItem,
-    removeProductFromCart,
-    changeProductQuatity,
 }: Props) => {
+    const productsArray = useAppSelector((state) => state.products)
+    const ProductsObject: ProductsObject = getProductsObject(productsArray)
     return (
         <>
             {keys(productsInCart).map((productId) => (
@@ -32,8 +28,6 @@ const CartProductList = ({
                     key={productId}
                     product={ProductsObject[parseInt(productId)]}
                     productCount={productsInCart[parseInt(productId)]}
-                    removeProductFromCart={removeProductFromCart}
-                    changeProductQuatity={changeProductQuatity}
                 />
             ))}
         </>

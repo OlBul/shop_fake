@@ -14,7 +14,7 @@ type Props = {
     }
 }
 
-const CartHeader = ({
+const CartPage = ({
     productsInCart,
     ProductsObject = getProductsObject(productsArray),
 }: Props) => {
@@ -23,7 +23,8 @@ const CartHeader = ({
             {keys(productsInCart).map((productId) => (
                 <div key={productId}>
                     {ProductsObject[parseInt(productId)].name}:{' '}
-                    {productsInCart[parseInt(productId)]}
+                    {productsInCart[parseInt(productId)]}:{' '}
+                    {ProductsObject[parseInt(productId)].price}
                 </div>
             ))}
             <div>
@@ -42,4 +43,4 @@ const CartHeader = ({
     )
 }
 
-export default CartHeader
+export default CartPage
